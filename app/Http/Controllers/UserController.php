@@ -62,4 +62,18 @@ class UserController
 
         return response()->json(User::all()->makeVisible(['password']));
     }
+
+    // Delete user for given $id
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        
+        if (!$user) {
+            return response()->json(['message' => "No user found with id: $id"], 404);
+        }
+        
+        $user->delete();
+        
+        return response()->json(['message' => "User with id: $id has been deleted successfully"], 200);
+    }
 }

@@ -15,4 +15,5 @@ Route::post('/login', [AuthController::class, 'login']);
 // Private routes
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users-with-passwords', [UserController::class, 'getUsersWithPasswords']);
+    Route::get('/delete-user/{id}', [UserController::class, 'deleteUser']);
 });
