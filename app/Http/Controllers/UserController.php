@@ -16,6 +16,7 @@ class UserController
             return response()->json(['message' => 'No users in database'], 404);
         }
 
+        // By default Laravel return code 200
         return response()->json(User::all());
     }
     
@@ -28,6 +29,8 @@ class UserController
             return response()->json(['message' => "No user found with id: $id"], 404);
         }
         
+
+        // By default Laravel return code 200
         return response()->json($user);
     }
 
@@ -75,5 +78,7 @@ class UserController
         $user->delete();
         
         return response()->json(['message' => "User with id: $id has been deleted successfully"], 200);
+        // Code 204 = No Content
+        //return response()->json(null, 204);
     }
 }
